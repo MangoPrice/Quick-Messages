@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick messages</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/content.css" />
+    <!-- Optional: Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-light text-dark">
+    <section id="navbar"><%- include("partials/navbar") %></section>
+
+    <section id="form"><%- include("partials/form") %></section>
+
+    <section id="submitted">
+      <% if (messages.length > 0) { %>
+      <h2 class="mt-5 text-center">Submitted Messages</h2>
+      <div class="row ms-1 me-0">
+        <% messages.forEach((msg, index) => { %>
+        <div class="col-md-6 col-lg-2">
+          <div class="card my-3 shadow-sm">
+            <div class="card-body">
+              <p class="card-text"><%= msg.content %></p>
+              <h5 class="card-title text-dark"><%= msg.day %></h5>
+
+              <!-- Edit button (link) -->
+              <a href="edit/<%= index %>" class="btn btn-sm"
+                ><i class="bi bi-pencil-square"></i
+              ></a>
+
+              <!-- Delete button (using fetch) -->
+              <button
+                onclick="deleteMessage('<%= index %>')"
+                class="btn btn-sm"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+      <% } else { %>
+      <h2 class="mt-5 text-center">No messages submitted yet.</h2>
+      <% } %>
+    </section>
+
+    <section id="footer"><%- include("partials/footer") %></section>
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/js/deleteMessage.js"></script>
+  </body>
+</html>

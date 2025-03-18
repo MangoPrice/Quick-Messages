@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Edit Message</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/styles/layout.css"/>
+    <link rel="stylesheet" href="/styles/content.css"/>
+</head>
+<body class="bg-light text-dark">
+    <section id="navbar"><%- include("partials/navbar") %></section>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Edit Message</h1>
+        <form action="/edit/<%= index %>" method="POST">
+            <div class="mb-3">
+                <label for="message" class="form-label">Edit your message:</label>
+                <textarea id="message" name="message" class="form-control" rows="3" required><%= message.content %></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-dark">Update</button>
+            </div>
+        </form>
+    </div>
+    <section id="footer"><%- include("partials/footer") %></section>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
